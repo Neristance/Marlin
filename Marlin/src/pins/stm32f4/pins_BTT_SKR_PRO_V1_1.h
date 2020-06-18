@@ -27,7 +27,7 @@
   #error "BIGTREE SKR Pro V1.1 supports up to 3 hotends / E-steppers."
 #endif
 
-#define BOARD_INFO_NAME "BIGTREE SKR Pro 1.1" // redefined?
+#define BOARD_INFO_NAME "BTT SKR Pro V1.1" // redefined?
 
 // Use one of these or SDCard-based Emulation will be used
 #if NO_EEPROM_SELECTED
@@ -352,8 +352,8 @@
  *           ￣￣
  *            W1
  */
-#define ESP_WIFI_MODULE_COM 6                         // Must also set either SERIAL_PORT or SERIAL_PORT_2 to this
-#define ESP_WIFI_MODULE_BAUDRATE            BAUDRATE  // Must use same BAUDRATE as SERIAL_PORT & SERIAL_PORT_2
+#define ESP_WIFI_MODULE_COM 6                     // Must also set either SERIAL_PORT or SERIAL_PORT_2 to this
+#define ESP_WIFI_MODULE_BAUDRATE        BAUDRATE  // Must use same BAUDRATE as SERIAL_PORT & SERIAL_PORT_2
 #define ESP_WIFI_MODULE_RESET_PIN           PG0
 #define ESP_WIFI_MODULE_ENABLE_PIN          PG1
 #define ESP_WIFI_MODULE_GPIO0_PIN           PF14

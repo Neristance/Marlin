@@ -159,6 +159,10 @@
   #include "feature/runout.h"
 #endif
 
+#if ENABLED(HOTEND_IDLE_TIMEOUT)
+  #include "feature/hotend_idle.h"
+#endif
+
 #if ENABLED(TEMP_STAT_LEDS)
   #include "feature/leds/tempstat.h"
 #endif
@@ -527,6 +531,8 @@ inline void manage_inactivity(const bool ignore_stepper_queue=false) {
 
   TERN_(AUTO_POWER_CONTROL, powerManager.check());
 
+  TERN_(HOTEND_IDLE_TIMEOUT, hotend_idle.check());
+
   #if ENABLED(EXTRUDER_RUNOUT_PREVENT)
     if (thermalManager.degHotend(active_extruder) > EXTRUDER_RUNOUT_MINTEMP
       && ELAPSED(ms, gcode.previous_move_ms + SEC_TO_MS(EXTRUDER_RUNOUT_SECONDS))
@@ -856,7 +862,7 @@ void setup() {
     MYSERIAL0.begin(BAUDRATE);
     uint32_t serial_connect_timeout = millis() + 1000UL;
     while (!MYSERIAL0 && PENDING(millis(), serial_connect_timeout)) { /*nada*/ }
-    #if NUM_SERIAL > 1
+    #if HAS_MULTI_SERIAL
       MYSERIAL1.begin(BAUDRATE);
       serial_connect_timeout = millis() + 1000UL;
       while (!MYSERIAL1 && PENDING(millis(), serial_connect_timeout)) { /*nada*/ }

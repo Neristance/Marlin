@@ -25,7 +25,7 @@
   #error "Oops! Select an STM32F1 board in 'Tools > Board.'"
 #endif
 
-#define BOARD_INFO_NAME "BIGTREE SKR Mini 1.1"
+#define BOARD_INFO_NAME "BTT SKR Mini V1.1"
 
 //#define DISABLE_DEBUG
 #define DISABLE_JTAG
@@ -37,7 +37,7 @@
   #define FLASH_EEPROM_EMULATION
   #define EEPROM_PAGE_SIZE     (0x800U) // 2KB
   #define EEPROM_START_ADDRESS (0x8000000UL + (STM32_FLASH_SIZE) * 1024UL - (EEPROM_PAGE_SIZE) * 2UL)
-  #define E2END                (EEPROM_PAGE_SIZE - 1)
+  #define MARLIN_EEPROM_SIZE    EEPROM_PAGE_SIZE  // 2KB
 #endif
 
 //
